@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'progress_download'
+
+style = ARGV.include?('--style') ? ARGV[ARGV.index('--style') + 1] : :dots
+if ARGV.include? '--style'
+  ARGV.delete_at ARGV.index('--style') + 1
+  ARGV.delete '--style'
+end
+
+ProgressDownload.download ARGV[0], :spinner => style
